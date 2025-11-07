@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f6fa;
+        margin: 0;
+        padding: 0;
+      }
+
+      .contact-container {
+        width: 80%;
+        max-width: 700px;
+        margin: 50px auto;
+        background: #606060;
+        /* background-image: inherit; */
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 28px;
+      }
+
+      label {
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
+        color: #444;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 8px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        outline: none;
+      }
+
+      textarea {
+        height: 120px;
+        resize: none;
+      }
+
+      button {
+        width: 100%;
+        margin-top: 20px;
+        padding: 14px;
+        background: #007bff;
+        border: none;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      button:hover {
+        background: #0056b3;
+      }
+
+      .email-box {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .email-box a {
+        text-decoration: none;
+        padding: 12px 25px;
+        background: #28a745;
+        color: white;
+        border-radius: 8px;
+        font-size: 17px;
+        font-weight: bold;
+        display: inline-block;
+      }
+
+      .email-box a:hover {
+        background: #1e7e34;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="contact-container">
+      <h1>Contact Us</h1>
+
+      <form action="https://tigonemmanuel03@gmail.com" method="POST">
+        <!-- Prevent Spam -->
+        <input type="hidden" name="_captcha" value="false" />
+
+        <!-- Redirect to a Thank You page (optional) -->
+        <!-- <input type="hidden" name="_next" value="thankyou.html" /> -->
+
+        <!-- FormSubmit Auto Settings -->
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://thankyou.html" />
+        <input type="hidden" name="_template" value="table" />
+
+        <!-- Send Confirmation Email to the Sender -->
+        <input type="hidden" name="_cc" value="" />
+        <input
+          type="hidden"
+          name="_autoresponse"
+          value="Thank you for contacting us! We have received your message and will respond shortly."
+        />
+
+        <label>Your Name</label>
+        <input type="text" name="name" required />
+
+        <label>Your Email</label>
+        <input type="email" name="email" required />
+
+        <label>Subject</label>
+        <input type="text" name="subject" required />
+
+        <label>Your Message</label>
+        <textarea name="message" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+
+      <!-- Contact by email -->
+      <div class="email-box">
+        <p>Prefer Email?</p>
+        <a href="tigonemmanuel03@gmail.com">Contact via Email</a>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // For now just show success alert — later can connect to backend
+          alert("Your message has been sent successfully! Thank you.");
+
+          // Clear form
+          this.reset();
+        });
+    </script>
+  </body>
+</html>

@@ -1,9 +1,133 @@
 <!DOCTYPE html>
-<html lang=" en ">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>community</title>
+    <title>Community</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: #ffffff;
+      }
+
+      .hero-section {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      /* Background Images */
+      .hero-img {
+        /* padding-top: 50px; */
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* object-position: top center; */
+        transition: opacity 1.5s ease-in-out;
+        opacity: 0;
+        /* margin: 0 auto; */
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+      }
+
+      .hero-img.active {
+        opacity: 1;
+      }
+
+      /* Floating Text */
+      .hero-text {
+        position: absolute;
+        bottom: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        color: white;
+        max-width: 700px;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.45);
+        border-radius: 10px;
+        font-size: 1.4rem;
+        opacity: 0;
+        animation: fadeText 2s forwards;
+      }
+
+      @keyframes fadeText {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, 20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translate(-50%, 0px);
+        }
+      }
+
+      .ceo-name {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: block;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <section class="hero-section">
+      <!-- Images -->
+      <img src="image/IMG-20250322-WA0025.jpg" class="hero-img active" />
+      <img src="image/2468.jpg" class="hero-img" />
+      <img src="image/CEO.jpg" class="hero-img" />
+
+      <!-- Description Text -->
+      <div class="hero-text" id="description-box">
+        <span class="ceo-name">Mr. Tigon Emmanuel</span>
+        Passionate leader with over 10 years of expertise in technology
+        innovation and community impact.
+      </div>
+    </section>
+
+    <script>
+      const images = document.querySelectorAll(".hero-img");
+      const descBox = document.getElementById("description-box");
+
+      const descriptions = [
+        {
+          name: "Mr. Tigon Bilikdam Emmanuel",
+          text: "Passionate leader with over 10 years of expertise in technology innovation and community development.",
+        },
+        {
+          name: "Mr. Tigon B. Prosper",
+          text: "Dedicated to empowering young minds and creating sustainable digital opportunities in Africa.",
+        },
+        {
+          name: "Mr. Binam Simon ",
+          text: "Believes in progress through collaboration, creativity, and strategic leadership.",
+        },
+      ];
+
+      let index = 0;
+
+      function changeSlide() {
+        images.forEach((img) => img.classList.remove("active"));
+        images[index].classList.add("active");
+
+        // Change text
+        descBox.style.animation = "none";
+        void descBox.offsetWidth; // Reset animation trigger
+        descBox.innerHTML = `
+        <span class="ceo-name">${descriptions[index].name}</span>
+        ${descriptions[index].text}
+      `;
+        descBox.style.animation = "fadeText 2s forwards";
+
+        index = (index + 1) % images.length;
+      }
+
+      setInterval(changeSlide, 4500); // every 4.5 seconds
+    </script>
+  </body>
 </html>
